@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "root": "C:\\Users\\SI\\Documents\\reporadar\\RepoRadar\\sample_project",
+  "indexed_count": 3,
+  "skipped_count": 0,
+  "files": [
+    {
+      "file_id": "app.py",
+      "path": "app.py",
+      "language": "python",
+      "size_bytes": 1070,
+      "line_count": 42,
+      "source": "\nimport json\nimport sys\nfrom pathlib import Path\n\n# Allow this simple development entry point to find src/reporadar.\nsys.path.insert(0, str(Path(__file__).resolve().parent.parent / \"src\"))\n\nfrom reporadar.scanner import scan_repository\n\n\ndef main():\n    repo_path = (\n        sys.argv[1]\n        if len(sys.argv) > 1\n        else Path(__file__).resolve().parent\n    )\n\n    result = scan_repository(repo_path)\n\n    # Avoid printing source code; show only summary metadata.\n    summary = {\n        \"root\": result[\"root\"],\n        \"indexed_count\": result[\"indexed_count\"],\n        \"skipped_count\": result[\"skipped_count\"],\n        \"files\": [\n            {\n                \"path\": item[\"path\"],\n                \"language\": item[\"language\"],\n                \"line_count\": item[\"line_count\"],\n                \"size_bytes\": item[\"size_bytes\"],\n            }\n            for item in result[\"files\"]\n        ],\n        \"skipped\": result[\"skipped\"],\n    }\n\n    print(json.dumps(summary, indent=2))\n\n\nif __name__ == \"__main__\":\n    main()\n"
+    },
+    {
+      "file_id": "auth.py",
+      "path": "auth.py",
+      "language": "python",
+      "size_bytes": 68,
+      "line_count": 2,
+      "source": "def login(username: str) -> str:\n    return f\"Welcome, {username}!\""
+    },
+    {
+      "file_id": "tests/test_auth.py",
+      "path": "tests/test_auth.py",
+      "language": "python",
+      "size_bytes": 205,
+      "line_count": 10,
+      "source": "import sys\nfrom pathlib import Path\n\nsys.path.insert(0, str(Path(__file__).resolve().parents[1]))\n\n\ndef test_login():\n    from auth import login\n\n    assert login(\"student\") == \"Welcome, student!\""
+    }
+  ],
+  "skipped": []
+}

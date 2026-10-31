@@ -1,0 +1,54 @@
+{
+  "top_k": 5,
+  "total_questions": 3,
+  "hit_rate_at_k": 1.0,
+  "mean_recall_at_k": 1.0,
+  "mrr": 0.611111111111111,
+  "cases": [
+    {
+      "question": "Where is authentication implemented?",
+      "expected_paths": [
+        "auth.py"
+      ],
+      "retrieved_paths": [
+        "app.py",
+        "tests/test_auth.py",
+        "auth.py",
+        "app.py"
+      ],
+      "hit_rate_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.3333333333333333
+    },
+    {
+      "question": "Where are authentication tests defined?",
+      "expected_paths": [
+        "tests/test_auth.py"
+      ],
+      "retrieved_paths": [
+        "app.py",
+        "tests/test_auth.py",
+        "auth.py",
+        "app.py"
+      ],
+      "hit_rate_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5
+    },
+    {
+      "question": "Where is the application entry point?",
+      "expected_paths": [
+        "app.py"
+      ],
+      "retrieved_paths": [
+        "app.py",
+        "tests/test_auth.py",
+        "auth.py",
+        "app.py"
+      ],
+      "hit_rate_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0
+    }
+  ]
+}
